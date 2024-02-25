@@ -1,9 +1,9 @@
-package com.kingpopen.observerpattern;
+package com.kingpopen.observerpattern.normal;
 
-import com.kingpopen.observerpattern.impl.CurrentConditionsDisplay;
-import com.kingpopen.observerpattern.impl.ForecastDisplay;
-import com.kingpopen.observerpattern.impl.StatisticsDisplay;
-import com.kingpopen.observerpattern.impl.WeatherData;
+import com.kingpopen.observerpattern.normal.impl.CurrentConditionsDisplay;
+import com.kingpopen.observerpattern.normal.impl.ForecastDisplay;
+import com.kingpopen.observerpattern.normal.impl.StatisticsDisplay;
+import com.kingpopen.observerpattern.normal.impl.WeatherData;
 
 /**
  * @author 彭锦波

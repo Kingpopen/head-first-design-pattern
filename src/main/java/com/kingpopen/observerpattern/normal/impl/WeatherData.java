@@ -1,10 +1,9 @@
-package com.kingpopen.observerpattern.impl;
+package com.kingpopen.observerpattern.normal.impl;
 
-import com.kingpopen.observerpattern.Observer;
-import com.kingpopen.observerpattern.Subject;
+import com.kingpopen.observerpattern.normal.Observer;
+import com.kingpopen.observerpattern.normal.Subject;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
 /**

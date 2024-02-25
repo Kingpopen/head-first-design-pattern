@@ -1,4 +1,4 @@
-package com.kingpopen.observerpattern;
+package com.kingpopen.observerpattern.normal;
 
 /**
  * @author 彭锦波
