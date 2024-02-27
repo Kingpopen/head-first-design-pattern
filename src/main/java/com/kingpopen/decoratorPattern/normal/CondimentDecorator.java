@@ -1,4 +1,4 @@
-package com.kingpopen.decoratorPattern;
+package com.kingpopen.decoratorPattern.normal;
 
 import lombok.AllArgsConstructor;
 

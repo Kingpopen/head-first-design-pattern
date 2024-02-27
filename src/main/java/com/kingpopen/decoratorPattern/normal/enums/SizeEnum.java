@@ -1,4 +1,4 @@
-package com.kingpopen.decoratorPattern.enums;
+package com.kingpopen.decoratorPattern.normal.enums;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

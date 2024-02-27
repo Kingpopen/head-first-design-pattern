@@ -1,8 +1,8 @@
-package com.kingpopen.decoratorPattern.decoratorimpl;
+package com.kingpopen.decoratorPattern.normal.decoratorimpl;
 
-import com.kingpopen.decoratorPattern.Beverage;
-import com.kingpopen.decoratorPattern.CondimentDecorator;
-import com.kingpopen.decoratorPattern.enums.SizeEnum;
+import com.kingpopen.decoratorPattern.normal.Beverage;
+import com.kingpopen.decoratorPattern.normal.CondimentDecorator;
+import com.kingpopen.decoratorPattern.normal.enums.SizeEnum;
 
 /**
  * @author 彭锦波

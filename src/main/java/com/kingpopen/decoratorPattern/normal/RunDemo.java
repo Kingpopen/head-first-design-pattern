@@ -1,10 +1,10 @@
-package com.kingpopen.decoratorPattern;
+package com.kingpopen.decoratorPattern.normal;
 
-import com.kingpopen.decoratorPattern.baseimpl.Espresso;
-import com.kingpopen.decoratorPattern.baseimpl.HouseBlend;
-import com.kingpopen.decoratorPattern.decoratorimpl.Mocha;
-import com.kingpopen.decoratorPattern.decoratorimpl.Whip;
-import com.kingpopen.decoratorPattern.enums.SizeEnum;
+import com.kingpopen.decoratorPattern.normal.baseimpl.Espresso;
+import com.kingpopen.decoratorPattern.normal.baseimpl.HouseBlend;
+import com.kingpopen.decoratorPattern.normal.decoratorimpl.Mocha;
+import com.kingpopen.decoratorPattern.normal.decoratorimpl.Whip;
+import com.kingpopen.decoratorPattern.normal.enums.SizeEnum;
 import lombok.extern.slf4j.Slf4j;
 
 /**
