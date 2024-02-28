@@ -27,5 +27,74 @@
 **问题：如果观察者中保存了一份主题的引用，那么观察者可能会通过这个引用执行了很多越权的事情，
 比如：调用通知所有的观察者的方法 或者 删除了其他的观察者。** 这种问题如何处理呢？
 
+### 3. 装饰器模式(Decorator pattern)
 
+以jdk中的InputStream为例：
+* 抽象组件（InputStream类）: 抽象组件是一个抽象类 或者 接口，定义了相应的方法。
+```java
+abstract class InputStream{
+  // 抽象的read方法
+  abstract int read();
+  
+  ......
+}
+```
+* 具体组件：对抽象组件的实现，实现了某些具体功能。
+  * FileInputStream: 实现了读取文件的功能。
+  * ByteArrayInputStream: 实现了读取字节数组的功能。
+
+```java
+import java.io.InputStream;
+
+class FileInputStream extends InputStream {
+
+  @Override
+  public int read() {
+    // 对read方法进行实现
+    ......
+  }
+}
+```
+* 抽象装饰器（FilterInputStream）：**含有一个抽象组件的引用的属性**，
+对抽象组件中方法(例如：read() 方法)进行实现(也可以不实现，留给具体的装饰器实现)，
+如果实现是通过抽象组件的引用实现的。
+
+```java
+import java.io.InputStream;
+
+class FilterInputStream extends InputStream {
+
+  // in 指向一个具体的组件
+  private InputStream in;
+
+  // 通过构造函数传入具体的组件
+  pulbic FilterInputStream(InputStream in) {
+    this.in = in;
+  }
+  ......
+
+  // 该方法可实现 也可不实现
+  @Override
+  public int read() {
+    // 调用 具体组件的read方法
+    in.read();
+  }
+  ......
+}
+
+```
+* 装饰器(LowerCaseInputStream)：继承(或实现) 抽象装饰器，重写(或实现) 抽象装饰器中的方法。
+```java
+class LowerCaseInputStream extends FilterInputStream{
+  public LowCaseInputStream(InputStream in){
+    super(in);
+  }
+  
+  @Override
+  public int read(){
+    // 借助被包装的 具体组件的 in.read() 实现当前类的read方法
+    ......
+  }
+}
+```
 
