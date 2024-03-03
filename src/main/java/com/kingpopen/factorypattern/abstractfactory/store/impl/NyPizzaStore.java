@@ -1,6 +1,5 @@
 package com.kingpopen.factorypattern.abstractfactory.store.impl;
 
-import com.kingpopen.factorypattern.abstractfactory.ingredient.Clam;
 import com.kingpopen.factorypattern.abstractfactory.ingredientfactory.PizzaIngredientFactory;
 import com.kingpopen.factorypattern.abstractfactory.pizza.Pizza;
 import com.kingpopen.factorypattern.abstractfactory.ingredientfactory.impl.NYIngredientFactory;
