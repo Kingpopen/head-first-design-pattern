@@ -1,4 +1,4 @@
-package com.kingpopen.decoratorPattern.jdk;
+package com.kingpopen.decoratorpattern.jdk;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
