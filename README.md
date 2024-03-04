@@ -20,9 +20,43 @@
 * 主题接口：其中含有：添加观察者，删除观察者，通知观察者的方法。
 * 主题接口实现：其中含有具体管理 观察者的数据结构（通常使用一个list），
 来实现添加、删除、通知观察者。
+
+```java
+import com.kingpopen.observerpattern.normal.Observer;
+
+interface Subject {
+
+  // 添加
+  addObserver(Observer observer);
+
+  // 移除
+  removeObserver(Observer observer);
+  
+  // 通知
+  notifyObserver();
+}
+```
 * 观察者接口：包含一个通知的方法，用于在主题中被调用。
 * 观察者获取数据存在：拉（观察者自己通过主题的引用获取数据） 
 和 推（主题调用观察者的通知方法，通过参数传递给观察者）两种模式。
+
+```java
+interface Observer {
+
+  // 通知
+  void notify();
+}
+
+class AObserver implements Observer{
+  // 主题的引用
+  private Subject subject;
+  ......
+  @Override
+  void notify(){
+    ......
+  }
+}
+```
 
 **问题：如果观察者中保存了一份主题的引用，那么观察者可能会通过这个引用执行了很多越权的事情，
 比如：调用通知所有的观察者的方法 或者 删除了其他的观察者。** 这种问题如何处理呢？
