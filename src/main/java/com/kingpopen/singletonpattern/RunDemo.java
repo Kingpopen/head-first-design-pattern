@@ -14,7 +14,7 @@ public class RunDemo {
 
   //线程池
   private final static ExecutorService executorService = Executors.newFixedThreadPool(10);
-  private static AtomicInteger cnt = new AtomicInteger(0);
+  private static final AtomicInteger cnt = new AtomicInteger(0);
 
   public static void main(String[] args) {
     for (int i = 0; i < 10; i++){
