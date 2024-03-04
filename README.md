@@ -136,3 +136,36 @@ interface AbstractFactory{
 这种模式的缺点就是：当需要新加一个产品接口的时候会有些复杂，需要在创建者接口中添加一个方法，
 
 所有的具体创建者实现类又要实现这个方法，改动会比较大。
+
+### 5. 单例模式
+确保一个类只有一个实例，并给全局进行访问。
+* 构造函数必须是私有
+* 引用必须是volatile + static, volatile保证了引用的可见性，但不能保证原子性。
+* 实例化方法内部必须使用锁
+```java
+public class Singleton {
+  // 单例的引用(volatile + 静态)
+  private volatile static Singleton singletonInstance;
+
+  // 私有的构造函数
+  private Singleton(){
+    // 在多线程获取单例的情况下， 只会被初始化一次
+    log.info("Singleton的实例被创建!");
+  }
+
+  // 双重检查锁
+  public static Singleton getSingletonInstance() {
+    if (Objects.isNull(singletonInstance)){
+      // 使用类对象作为锁 保证同步
+      synchronized (Singleton.class){
+        // 再一次判断
+        if (Objects.isNull(singletonInstance)){
+          singletonInstance = new Singleton();
+        }
+      }
+    }
+    // singletonInstance不为null 就不用抢占锁 减少性能开销
+    return singletonInstance;
+  }
+}
+```
