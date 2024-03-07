@@ -18,7 +18,7 @@ public class RemoteController {
   private final Command[] offCommands;
 
   // 使用stack存储command
-  private Stack<Command> undoCommands;
+  private final Stack<Command> undoCommands;
 
 
   public RemoteController(int num) {

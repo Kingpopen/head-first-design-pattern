@@ -18,10 +18,10 @@ public class Light {
   private String name;
 
   public void on() {
-    log.info("Light is on");
+    log.info("{}  is on", name);
   }
 
   public void off() {
-    log.info("Light is off");
+    log.info("{} is off", name);
   }
 }
