@@ -203,3 +203,46 @@ public class Singleton {
   }
 }
 ```
+
+### 6.命令模式
+将请求封装成对象，以便使用不同的请求、队列或者日志来参数化其他对象。
+* 命令接口：定义了命令的执行方法(Command)
+```java
+interface Command{
+  void execute();
+} 
+```
+* 具体命令：实现命令接口，例如：打开电灯的命令(LightOnCommand)、关闭电灯的命令(LightOffCommand)
+命令类的实现类中会含有一个执行者的引用，用于实现具体的执行操作。
+```java
+class LightOnCommand implements Command{
+  private Light light;
+  ......
+  @Override
+  void execute(){
+    light.on();
+  }
+}
+```
+* 命令的执行者：命令的具体执行对象，例如：电灯(Light)
+```java
+class Light{
+  void on(){
+    ......
+  }
+}
+```
+* 命令的调用者：调用命令的对象，其中含有命令属性，例如：遥控器(RemoteControl)
+```java
+class RemoteControl{
+  private Command command;
+  ......
+  
+  void buttonOn(){
+    command.execute();
+  }
+}
+```
+给我的感觉就是：命令的调用者不直接操作命令的执行者，将两者接耦开来。（之前没怎么使用过。）
+应用场景：任务队列，日志等等。
+日志的例子：日志的记录是一个命令，日志的执行者是一个日志类，日志的调用者是一个业务类。
