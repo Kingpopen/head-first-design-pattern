@@ -1,4 +1,4 @@
-package com.kingpopen.templatepattern;
+package com.kingpopen.templatepattern.normal;
 
 import lombok.extern.slf4j.Slf4j;
 

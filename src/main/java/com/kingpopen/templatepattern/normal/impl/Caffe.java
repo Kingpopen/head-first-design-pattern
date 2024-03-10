@@ -1,9 +1,8 @@
-package com.kingpopen.templatepattern.impl;
+package com.kingpopen.templatepattern.normal.impl;
 
-import com.kingpopen.templatepattern.AbstractBeverage;
+import com.kingpopen.templatepattern.normal.AbstractBeverage;
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Objects;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 @AllArgsConstructor
-public class Caffe extends AbstractBeverage{
+public class Caffe extends AbstractBeverage {
     private BufferedReader in;
 
     @Override

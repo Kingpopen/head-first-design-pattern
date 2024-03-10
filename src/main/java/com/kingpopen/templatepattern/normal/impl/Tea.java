@@ -1,6 +1,6 @@
-package com.kingpopen.templatepattern.impl;
+package com.kingpopen.templatepattern.normal.impl;
 
-import com.kingpopen.templatepattern.AbstractBeverage;
+import com.kingpopen.templatepattern.normal.AbstractBeverage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
