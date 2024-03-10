@@ -301,3 +301,48 @@ class Facade{
 适配器模式的中间层是：适配器接口（target），其中的组件是：被适配器接口（adaptee）
 命令模式的中间层是：命令接口（command），其中的组件是：命令的执行者（receiver）
 外观模式的中间层是：外观接口（facade），其中的组件是：子系统的接口（component）
+
+### 9. 模板方法模式
+定义了一个算法的骨架，将一些步骤的具体实现延迟到子类中。 虽然许多时候 组合要优于 继承，但是继承仍然有许多的好处：减少代码的复用，封装代码的逻辑。
+模版方法是平时使用比较多的设计模式，例如平时写业务代码时存在多个repository，其中大部分的主体逻辑是相同的，
+只有一些具体的实现有些不同，这时就可以写一个抽象的repository，将相同的逻辑写在抽象类中，将不同的逻辑留给具体的实现类。
+模版类(AbstractTemplate)：定义了一个模版方法，其中包含了一些具体的逻辑，以及一些抽象的方法，这些抽象的方法留给子类实现。
+**⚠️ 抽象的方法尽量使用protected，对子类可见，对其他类不可见。**
+**⚠️ 模版方法使用public + final修饰，对外部可见，同时子类不能重写**
+```java
+abstract class AbstractTemplate{
+  // 模版方法 使用public + final修饰，不允许子类重写
+  public final void templateMethod(){
+    // 具体的逻辑
+    ......
+    // 抽象的方法
+    abstractMethod();
+    // 钩子方法
+    hookMethod();
+  }
+  // 抽象的方法
+  protected abstract void abstractMethod();
+  
+  // 钩子方法
+  protected void hookMethod(){
+    // 钩子方法是一个空方法，子类可以选择性的重写
+  }
+}
+```
+* 具体的实现类(Concrete)：实现了抽象的方法，以及钩子方法。
+```java
+class Concrete extends AbstractTemplate{
+  @Override
+  protected void abstractMethod(){
+    // 具体的实现
+    ......
+  }
+  
+  @Override
+  protected void hookMethod(){
+    // 钩子方法的具体实现
+    ......
+  }
+}
+```
+好莱坞原则：不要调用我们，我们会调用你。在模版方法中，父类调用子类的方法，而不是子类调用父类的方法。
