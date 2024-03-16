@@ -1,6 +1,6 @@
-package com.kingpopen.compositepattern.impl;
+package com.kingpopen.compositepattern.inneriterator.impl;
 
-import com.kingpopen.compositepattern.Node;
+import com.kingpopen.compositepattern.inneriterator.Node;
 import lombok.extern.slf4j.Slf4j;
 
 /**

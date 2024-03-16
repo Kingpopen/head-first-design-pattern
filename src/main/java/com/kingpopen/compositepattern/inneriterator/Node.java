@@ -1,4 +1,4 @@
-package com.kingpopen.compositepattern;
+package com.kingpopen.compositepattern.inneriterator;
 
 /**
  * @author 彭锦波

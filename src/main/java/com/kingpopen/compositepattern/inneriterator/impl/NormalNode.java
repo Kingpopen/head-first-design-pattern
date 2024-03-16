@@ -1,6 +1,6 @@
-package com.kingpopen.compositepattern.impl;
+package com.kingpopen.compositepattern.inneriterator.impl;
 
-import com.kingpopen.compositepattern.Node;
+import com.kingpopen.compositepattern.inneriterator.Node;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +33,7 @@ public class NormalNode implements Node {
     children.remove(node);
   }
 
+  // 根 左 右
   @Override
   public void print() {
     log.info("========== {} ==========", name);

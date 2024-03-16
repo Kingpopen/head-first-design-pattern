@@ -1,7 +1,7 @@
-package com.kingpopen.compositepattern;
+package com.kingpopen.compositepattern.inneriterator;
 
-import com.kingpopen.compositepattern.impl.LeafNode;
-import com.kingpopen.compositepattern.impl.NormalNode;
+import com.kingpopen.compositepattern.inneriterator.impl.LeafNode;
+import com.kingpopen.compositepattern.inneriterator.impl.NormalNode;
 
 /**
  * @author 彭锦波
@@ -32,6 +32,7 @@ public class RunDemo {
     foods.add(mantou);
     foods.add(drinks);
 
-    foods.print();
+    Waitress waitress = new Waitress(foods);
+    waitress.print();
   }
 }
