@@ -35,7 +35,7 @@ public class HasQuarterState implements State {
     // 判断是否为赢家
     if (judgeWinner()) {
       gumballMachine.setCurStateToWinnerState();
-    }else{
+    } else {
       gumballMachine.setCurStateToSoldState();
     }
     return true;

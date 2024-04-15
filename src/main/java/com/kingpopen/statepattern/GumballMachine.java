@@ -43,7 +43,7 @@ public class GumballMachine {
 
   // 转动曲柄
   public void turnCrank() {
-    if (this.curState.turnCrank()){
+    if (this.curState.turnCrank()) {
       this.curState.dispense();
     }
   }
