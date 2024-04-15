@@ -446,21 +446,88 @@ class ConcreteState implements State{
   }
 }
 ```
-### 13. 模式的模式(compound pattern)
-将多种模式组合在一起使用
-装饰器模式 和 适配器模式很像，都是实现一个接口。
-适配器模式中调用的引用是其他类（Goose类）。
-装饰器模式中调用的引用还是接口类（Quackable接口），同时会修改方法的行为。
-工厂模式管理鸭子：工厂是抽象的（有两种工厂），产品也是抽象的（有两种类型的产品）
-观察者模式：
-Observable 主题，鸭子就是主题，当鸭子叫时，就通知观察者（调用观察者的方法）。
-Observer 观察者，观察者可以将自己注册到主题上（内部含有主题的引用）
-MVC(Model-View-Controller):
-Model: 存储了数据、状态、逻辑
-View：依赖Model的改变决定显示的内容
-Controller: 依赖View的改变，控制Model的改变
+### 13. 代理模式（proxy pattern）
+代理模式：使用代理模式创建代表，让代表对象控制某个对象的访问，代理类（提交给外部访问的类） 和 被代理类（真正做事情的类）都实现同一个接口。
 
-### 14. 真实世界的模式
+远程代理：为远程的对象（服务端的对象）创建代理，客户端使用代理对象进行访问。
+
+远程接口：这个接口是客户端 和 服务端共同使用的接口，并且该接口需要继承Remote类（作为一个远程接口的标识）
+
+远程实现类：远程实现类需要实现远程接口，并且将远程接口进行注册。
+```java
+// 自定义的远程接口
+public interface MyRemote extends Remote {
+
+  void sayHello();
+}
+
+// 服务端的远程接口实现
+public class MyRemoteImpl implements MyRemote {
+
+  @Override
+  public void sayHello() {
+    // ......
+  }
+}
+
+// 进行注册
+Registry registry = LocateRegistry.createRegistry(1099);
+registry.rebind("RemoteHello", service);
+
+// 客户端通过网络访问注册表 获取到对应的信息 进行访问
+Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+MyRemote stub = (MyRemote)registry.lookup("RemoteHello");
+stub.sayHello();
+```
+动态代理：可以在**运行时**创建一个代理类，实现一个或多个接口，利用java.lang.reflect包
+接口类（Person）：给代理类和被代理类用于实现的接口，定义相关的方法。
+InvocationHandler接口：动态代理和普通代理不同的一点是：
+* 普通的代理：是在代理对象中含有一个被代理对象的引用，具体执行都是调用被代理对象的引用执行。
+* 动态代理：被代理对象的引用是放在invocationHandler类中，具体的执行逻辑是放在invocationHandler类对象的invoke方法中。
+```java
+public interface Person{
+  void setName(final String name);
+  void setAge(final int age);
+}
+
+public class MyInvocationHandler implements InvocationHandler {
+  // 被代理对象的引用
+  private Person person;
+
+  @Override
+  public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    // 执行之前的 逻辑 ......
+    method.invoke(person, args); // 被代理对象的执行逻辑
+    // 执行之后的 逻辑 ......
+    return null;
+  }
+}
+
+// 生成代理对象
+Proxy.newProxyInstance(
+        person.getClass().getClassLoader(),  // 类加载器
+        person.getClass().getInterfaces(),   // 类中定义的接口
+        new MyInvocationHandler(person)
+        )
+```
+- [ ] 具体的代理对象生成细节，需要通过看相关生成的字节码才知道。
+- [ ] cglib动态代理可以不需要定义接口。
+### 14. 模式的模式(compound pattern)
+将多种模式组合在一起使用
+* 装饰器模式 和 适配器模式很像，都是实现一个接口。
+* 适配器模式中调用的引用是其他类（Goose类）。
+* 装饰器模式中调用的引用还是接口类（Quackable接口），同时会修改方法的行为。
+* 工厂模式管理鸭子：工厂是抽象的（有两种工厂），产品也是抽象的（有两种类型的产品）
+* 观察者模式：
+  * Observable 主题，鸭子就是主题，当鸭子叫时，就通知观察者（调用观察者的方法）。
+  * Observer 观察者，观察者可以将自己注册到主题上（内部含有主题的引用）
+
+* MVC(Model-View-Controller):
+* Model: 存储了数据、状态、逻辑
+* View：依赖Model的改变决定显示的内容
+* Controller: 依赖View的改变，控制Model的改变
+
+## # 15. 真实世界的模式
 模式是在某种特定场景下针对某种问题的解决方案。
 模式是被发现的，而不是被创建的。
 设计系统时一开始要以简单为主，不要用很复杂的模式解决简单的问题。（Keep it simple）
@@ -469,7 +536,7 @@ Controller: 依赖View的改变，控制Model的改变
 * 行为型：关注对象之间的通信、协作、职责分配等问题，解决对象之间沟通、交互的问题。
 * 结构型：如何组合类和对象形成一个更大的结构。
 
-### 15. 剩余的模式
+### 16. 剩余的模式
 剩余的模式在具体的工作中用到了再具体学习吧。
 * 桥接模式
 * 生成器模式
